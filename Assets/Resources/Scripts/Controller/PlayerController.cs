@@ -3,68 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 using LTAUnityBase.Base.DesignPattern;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : TankController
 {
-    public int speed;
-    public GameObject gun;
-    public GameObject Bullet;
-    public Transform Transhoot;
-    public GameObject BodyTank;
-    public GameObject Player;
-    // Start is called before the first frame update
-    private void Awake()
+    private Camera _camera;
+    public void Update()
     {
-        Debug.LogError("Awaken");
-    }
-    void Start()
-    {
-        Debug.LogError("start");
-    }
-    private void OnEnable()
-    {
-        Debug.LogError("eneble");
-    }
-    private void OnDestroy()
-    {
-        Debug.LogError("Destroy");
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        TankMove();
-        RotateGun();
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-        }
+        //float horizontal = Input.GetAxis("Horizontal");
+        //float vertical = Input.GetAxis("Vertical");
+        //Vector3 direction = new Vector3(horizontal, vertical);
+        //Move(direction);
+        ////Vector3 gunDirection = new Vector3(
+        ////       Input.mousePosition.x - Screen.width / 2,
+        ////       Input.mousePosition.y - Screen.height / 2
+        ////   );
+        var position = Input.mousePosition;
+        Vector3 gunDirectionmoba = new Vector3(
+              position.x - Screen.width / 2,
+              position.y - Screen.height / 2
+          );
+        RotateGun(gunDirectionmoba);
+        //if (Input.GetMouseButton(1))
+        //{
+        //    Shoot();
+        //}
     }
 
-    private void TankMove()
+    public void Moveleft()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(horizontal, vertical);
-        BodyTank.gameObject.transform.position += direction * Time.deltaTime * speed;
-        if (direction != Vector3.zero)
-        {
-            this.gameObject.transform.up = direction;
-        }
+        var left = new Vector3(-10, 0, 0);
+        Move(left);
     }
-    public int level;
-
-    public void Shoot()
+    public void MoveRight()
     {
-        Instantiate(Bullet, Transhoot.position, Transhoot.rotation);
-        Observer.Instance.Notify(TOPICNAME.ENEMYDESTROY,level);
+        var right = new Vector3(10, 0, 0);
+        Move(right);
     }
-
-    private void RotateGun()
+    public void MoveUp()
     {
-        Vector3 gunDirection = new Vector3(
-             Input.mousePosition.x - Screen.width / 2,
-             Input.mousePosition.y - Screen.height / 2
-         );
-        gun.gameObject.transform.up = gunDirection;
-
+        var up = new Vector3(0, 10, 0);
+        Move(up);
     }
+    public void MoveDown()
+    {
+        var down = new Vector3(0, -10, 0);
+        Move(down);
+    }
+}
+public class Player : SingletonMonoBehaviour<PlayerController>
+{
+
 }

@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : TankController
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        var playerpos = Player.Instance.transform.position;
+        var direction = playerpos - transform.position;
+        Move(direction);
+        RotateGun(direction);
+        if (Random.Range(0, 100) % 50 == 0)
+        {
+            Shoot();
+        }
     }
 }
