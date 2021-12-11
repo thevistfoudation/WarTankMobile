@@ -96,4 +96,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 0
   speed: 10
+  dam: 0
   smoke: {fileID: 7437352520833527650, guid: 852e4385b0a91c8449fa94359bdab859, type: 3}
+  prebIce: {fileID: 9091022925281475196, guid: b4246cda6181e3546be77678e4e2f609, type: 3}

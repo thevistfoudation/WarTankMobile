@@ -4,11 +4,15 @@ using UnityEngine;
 using LTAUnityBase.Base.DesignPattern;
 using System;
 
-public class BulletController : MonoBehaviour
+public class BulletController : MonoBehaviour,IceSkill
 {
     public int time = 0;
     public int speed = 0;
+    public int dam;
     public GameObject smoke;
+    public GameObject prebIce;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,9 +46,15 @@ public class BulletController : MonoBehaviour
         if (time == 20)
         {
             Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
+            Ice(100, prebIce);
             PoolingObject.DestroyPooling<BulletController>(this);
             return;
         }
     }
 
+    public void Ice(int dameff, GameObject Ice)
+    {
+        Instantiate(Ice, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        dam = dameff;
+    }
 }

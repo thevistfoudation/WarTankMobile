@@ -359,7 +359,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281183635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.062, y: 0, z: -0.107}
+  m_LocalPosition: {x: 1.062, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 171111344}
@@ -382,7 +382,8 @@ MonoBehaviour:
   Gun: {fileID: 171111344}
   Than: {fileID: 281183637}
   tranShoot: {fileID: 773009376}
-  bullet: {fileID: 4667108694871495884, guid: 5cea13389eb73094193a4d03dbbf1b7a, type: 3}
+  prefabBullet: {fileID: 5064613504188623400, guid: 5cea13389eb73094193a4d03dbbf1b7a,
+    type: 3}
   opponent: enemy
   item: 
 --- !u!50 &281183639
@@ -1128,7 +1129,8 @@ MonoBehaviour:
   Gun: {fileID: 1028597503}
   Than: {fileID: 895451839}
   tranShoot: {fileID: 854879914}
-  bullet: {fileID: 3006709442387363440, guid: fb741191ca77d5442bd236eef109a181, type: 3}
+  prefabBullet: {fileID: 7483914616851868444, guid: fb741191ca77d5442bd236eef109a181,
+    type: 3}
   opponent: Player
   item: none
 --- !u!212 &895451838
@@ -1189,7 +1191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 895451836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.007}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1028597503}

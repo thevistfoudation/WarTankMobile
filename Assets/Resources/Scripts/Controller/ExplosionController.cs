@@ -7,5 +7,5 @@ public class ExplosionController : MonoBehaviour
    public void SmokeEX()
     {
         Destroy(this.gameObject);
-        Debug.LogError("DA XAY RA");    }
+    }
 }
