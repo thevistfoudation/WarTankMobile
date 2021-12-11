@@ -41,9 +41,10 @@ public class BulletController : MonoBehaviour
         time += 1;
         if (time == 20)
         {
-            Destroy(this.gameObject);
             Instantiate(smoke, this.gameObject.transform.position, this.gameObject.transform.rotation);
+            PoolingObject.DestroyPooling<BulletController>(this);
+            return;
         }
     }
-     
+
 }

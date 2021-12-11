@@ -5,10 +5,9 @@ using LTAUnityBase.Base.DesignPattern;
 
 public class PlayerController : TankController
 {
-    private Camera _camera;
     public void Update()
     {
-        //float horizontal = Input.GetAxis("Horizontal");
+       //float horizontal = Input.GetAxis("Horizontal");
         //float vertical = Input.GetAxis("Vertical");
         //Vector3 direction = new Vector3(horizontal, vertical);
         //Move(direction);
@@ -30,22 +29,22 @@ public class PlayerController : TankController
 
     public void Moveleft()
     {
-        var left = new Vector3(-10, 0, 0);
+        var left = new Vector3(-1, 0, 0);
         Move(left);
     }
     public void MoveRight()
     {
-        var right = new Vector3(10, 0, 0);
+        var right = new Vector3(1, 0, 0);
         Move(right);
     }
     public void MoveUp()
     {
-        var up = new Vector3(0, 10, 0);
+        var up = new Vector3(0, 1, 0);
         Move(up);
     }
     public void MoveDown()
     {
-        var down = new Vector3(0, -10, 0);
+        var down = new Vector3(0, -1, 0);
         Move(down);
     }
 }

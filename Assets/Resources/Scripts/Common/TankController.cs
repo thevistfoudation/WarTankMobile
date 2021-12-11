@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using LTAUnityBase.Base.DesignPattern;
 public class TankController : MoveController
 {
     [SerializeField]
@@ -13,7 +13,7 @@ public class TankController : MoveController
     [SerializeField]
     Transform tranShoot;
 
-    public GameObject bullet;
+    public BulletController prefabBullet;
 
     public string opponent;
     public string item;
@@ -33,7 +33,21 @@ public class TankController : MoveController
 
     public void Shoot()
     {
-        Instantiate(bullet, tranShoot.position, tranShoot.rotation);
+        // Instantiate(prefabBullet, tranShoot.position, tranShoot.rotation);
+        createBullet(tranShoot);
+    }
+
+    public BulletController createBullet(Transform tranShoot)
+    {
+        BulletController bullet = PoolingObject.createPooling<BulletController>(prefabBullet);
+        if (bullet == null)
+        {
+            return Instantiate(prefabBullet, tranShoot.position, tranShoot.rotation);
+        }
+        bullet.time = 0;
+        bullet.transform.position = tranShoot.position;
+        bullet.transform.rotation = tranShoot.rotation;
+        return bullet;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
